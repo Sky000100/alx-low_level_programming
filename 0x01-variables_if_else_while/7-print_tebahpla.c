@@ -2,19 +2,20 @@
 /**
  * main - Entry point
  *
- * 
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int c;
+	char letter = 'z';
 
-	for (c = 'z'; c <= 'a'; c++)
+	while (letter >= 'a')
 	{
-		putchar(c);
+		putchar(letter);
+		letter--;
 	}
 
 	putchar('\n');
-	
+
 	return (0);
 }
