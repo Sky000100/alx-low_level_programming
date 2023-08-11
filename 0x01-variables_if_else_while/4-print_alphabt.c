@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * This program prints all lowercase alphabet letters
- * 
+ *
  *
  * Return: Always 0 (Success)
  */
