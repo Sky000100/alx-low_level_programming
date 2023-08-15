@@ -1,15 +1,20 @@
-#include <stdio.h>
+#include "main.h"
 
-/* betty style doc for function main goes there */
 /**
- * main - Entry point
+ * main - Entry point of the program
  *
- * Return: Always 0 (Success)
- */
+ * Description: prints _putchar using putchar prototype
+ *
+ * Return: always 0 (Success)
+*/
 
 int main(void)
 {
-	printf("_putchar\n");
+	char str[] = "_putchar";
+	int ch;
 
+	for (ch = 0; ch < 8; ch++)
+		_putchar(str[ch]);
+	_putchar('\n');
 	return (0);
 }
