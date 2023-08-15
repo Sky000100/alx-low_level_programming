@@ -8,7 +8,7 @@
  *		of the English alphabet in ascending order,
  *		ten times, each followed by a new line.
  */
-void print_alphabet_x10(void);
+void print_alphabet_x10(void)
 {
 	char letter;
 	int repeat;
@@ -21,6 +21,6 @@ void print_alphabet_x10(void);
 		_putchar(letter);
 		letter++;
 		}
-		_putchar('\n')
+		_putchar('\n');
 	}
 }
