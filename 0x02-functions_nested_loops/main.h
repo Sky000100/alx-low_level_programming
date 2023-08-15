@@ -5,6 +5,7 @@
 
 /* Prototypes */
 int _putchar(char c);
+void print_alphabet(void);
 /* Add prototypes for other functions here */
 
 #endif /* MAIN_H */
