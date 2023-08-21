@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 
-// Function prototypes
 void reset_to_98(int *n);
 
 #endif
