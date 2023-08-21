@@ -13,6 +13,7 @@ int _atoi(char *s)
 	int result = 0;
 	int i = 0;
 
+	/* Handle sign */
 	while (s[i] == '-' || s[i] == '+')
 	{
 		if (s[i] == '-')
@@ -20,6 +21,7 @@ int _atoi(char *s)
 		i++;
 	}
 
+	/* Convert digits to integer */
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		int digit = s[i] - '0';
