@@ -15,12 +15,11 @@ char random_char(char min, char max)
 
 /**
  * generate_password - Generates a random password of a given length.
+ *
  * @length: The desired length of the password.
  */
 void generate_password(int length)
 {
-	srand(time(NULL));
-
 	char lowercase_letters[] = "abcdefghijklmnopqrstuvwxyz";
 	char uppercase_letters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char digits[] = "0123456789";
@@ -28,6 +27,8 @@ void generate_password(int length)
 
 	char password[length + 1];
 	int charset_size, charset_choice;
+
+	srand(time(NULL));
 
 	for (int i = 0; i < length; i++)
 	{
@@ -43,24 +44,24 @@ void generate_password(int length)
 		charset_size = sizeof(special_characters) - 1;
 
 	password[i] = random_char(lowercase_letters[0],
-			lowercase_letters[charset_size - 1]);
+				lowercase_letters[charset_size - 1]);
 	}
 
 	password[length] = '\0';
 
-	printf("Generated password: %s\n", password);
+	printf("%s", password);
 }
 
 /**
  * main - Entry point of the program.
+ *
  * Return: Always 0.
  */
 int main(void)
 {
-	int password_length = 12;
+	int password_length = 27;
 
 	generate_password(password_length);
-
+	putchar('\n');
 	return (0);
 }
-
