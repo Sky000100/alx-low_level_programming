@@ -1,57 +1,57 @@
+#include "main.h"
 #include <stdio.h>
-#include <stdbool.h>
-#include <ctype.h>
 
 /**
- * is_separator - Check if a character is a word separator.
- * @c: The character to check.
- *
- * Return: True if c is a separator, false otherwise.
- */
-bool is_separator(char c)
+ * isLower - determine whether ascii is lowercase
+ * @c: character
+ * Return: 1 if true, 0 if false
+*/
+
+int isLower(char c)
 {
-	char separators[] = " \t\n,;.!?\"(){}";
-	int i;
-
-	for (i = 0; separators[i] != '\0'; i++)
-	{
-		if (separators[i] == c)
-		{
-			return (true);
-		}
-	}
-
-	return (false);
+	return (c >= 97 && c <= 122);
 }
 
 /**
- * cap_string - Capitalize all words in a string based on separators.
- * @s: The input string.
- *
- * Return: Pointer to the modified string.
- */
+ * isDelimiter - determine whether ascii is delimiter
+ * @c: character
+ * Return: 1 if true, 0 if false
+*/
+
+int isDelimiter(char c)
+{
+	int i;
+	char delimiter[] = "\t\n,.!?\"(){}";
+
+	for (i = 0; i < 12; i++)
+		if (c == delimiter[i])
+			return (1);
+	return (0);
+}
+
+/**
+ * cap_string - capitalizes all words of a string
+ * @s: input string
+ * Return: string with capitalized words
+*/
 char *cap_string(char *s)
 {
-	bool new_word = true;
 	char *ptr = s;
+	int foundDelimit = 1;
 
-	while (*ptr != '\0')
+	while (*s)
 	{
-		if (is_separator(*ptr))
+		if (isDelimiter(*s))
+			foundDelimit = 1;
+		else if (isLower(*s) && foundDelimit)
 		{
-			new_word = true;
-		}
-		else if (new_word)
-		{
-			*ptr = toupper(*ptr);
-			new_word = false;
+			*s -= 32;
+			foundDelimit = 0;
 		}
 		else
-		{
-			*ptr = tolower(*ptr);
-		}
-		ptr++;
+			foundDelimit = 0;
+		s++;
 	}
-
-	return (s);
+	return (ptr);
 }
+
