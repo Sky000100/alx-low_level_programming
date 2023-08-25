@@ -1,47 +1,24 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
- * _putchar - Writes a character to stdout.
- * @c: The character to write.
- *
- * Return: On success, 1. On error, -1 is returned.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
- * print_number - Prints an integer.
- * @n: The integer to be printed.
+ * print_number - Prints numbers chars
+ * @n: The integer params
+ * Return: 0
  */
 
 void print_number(int n)
 {
-	int divisor, num;
+	unsigned int n1;
 
+	n1 = n;
 	if (n < 0)
 	{
-		_putchar('-');
-		n = -n;
+		_putchar('_');
+		n1 = -n;
 	}
-
-	divisor = 1;
-	num = n;
-
-	while (num > 9)
+	if (n1 / 10 != 0)
 	{
-
-		divisor *= 10;
-		num /= 10;
+		print_number(n1 / 10);
 	}
-
-	while (divisor > 0)
-	{
-		int digit = n / divisor;
-
-		_putchar(digit + '0');
-		n %= divisor;
-		divisor /= 10;
-	}
+	_putchar((n1 % 10) + '0');
 }
