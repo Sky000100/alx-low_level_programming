@@ -8,39 +8,16 @@
  *
  * Return: A pointer to the resulting string (`dest`).
  */
-char *_strcat(char *dest, const char *src)
+char *_strcat(char *dest, char *src)
 {
-	char *dest_end = dest;
+	int c, c2;
 
-	while (*dest_end != '\0')
-	{
-		dest_end++;
-	}
+	c = 0;
+	while (dest[c])
+		c++;
 
-	while (*src != '\0')
-	{
-		*dest_end = *src;
-		dest_end++;
-		src++;
-	}
-
-	*dest_end = '\0';
+	for (c2 = 0; src[c2] ; c2++)
+		dest[c++] = src[c2];
 
 	return (dest);
 }
-
-/**
- * main - Entry point of the program.
- *
- * Return: Always 0 (indicating success).
- */
-int main(void)
-{
-	char str1[50] = "Hello, ";
-	char str2[] = "world!";
-
-	printf("Concatenated string: %s\n", _strcat(str1, str2));
-
-	return (0);
-}
-
