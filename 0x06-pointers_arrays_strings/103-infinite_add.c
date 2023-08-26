@@ -39,7 +39,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			s = 0;
 		r[k] = (f + s + d) % 10 + '0';
 		d = (f + s + d) / 10;
-
 	}
 	if (d == 1)
 	{
