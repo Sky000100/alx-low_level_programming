@@ -8,17 +8,18 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int sum_main = 0;
-	int sum_sec = 0;
-	int i;
+	int s1 = 0;
+	int s2 = 0;
+	int itr;
 
-	for (i = 0; i < size; i++)
+	for (itr = 0; itr < size; itr++)
 	{
-		sum_main += a[i * size + i];
-		sum_sec += a[i * size + (size - 1 - i)];
+		s1 += a[itr];
+		s2 += a[size - itr - 1];
+		a += size;
 	}
 
-	printf("Sum of main diagonal: %d\n", sum_main);
-	printf("Sum of secondary diagonal: %d\n", sum_sec);
+	printf("%d, ", s1);
+	printf("%d, ", s2);
 }
 
