@@ -1,6 +1,5 @@
 #!/bin/bash
-source_files=$(find . -maxdepth 1 -type -name "*.c")
-gcc -c $source_files
-ar rcs liball.a *.o
-rm -f *.o
+gcc -c *.c
+ar rc liball.a *.o
+ranlib liball.a
 
