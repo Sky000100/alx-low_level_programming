@@ -1,33 +1,28 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * count_words - Count the number of words in a string.
- * @str: The input string.
+ * wrdcnt - Count the number of words in a string.
+ * @s: The input string.
  *
  * Return: The number of words in the string.
  */
-int count_words(char *str)
+int wrdcnt(char *s)
 {
-	int count = 0;
-	int is_word = 0;
+	int i, n = 0;
 
-	while (*str != '\0')
+	for (i = 0; s[i]; i++)
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n')
+		if (s[i] == ' ')
 		{
-			is_word = 0;
+			if (s[i + 1] != ' ' && s[i + 1] != '\0')
+				n++;
 		}
-		else if (is_word == 0)
-		{
-			is_word = 1;
-			count++;
-		}
-		str++;
+		else if (i == 0)
+		n++;
 	}
-
-	return (count);
+	n++;
+	return (n);
 }
 
 /**
@@ -39,42 +34,45 @@ int count_words(char *str)
 
 char **strtow(char *str)
 {
-	int num_words;
-	int word_index;
-	char *token;
-	char **words;
-	int i;
+	int i,j,k,l,n = 0, wc = 0;
+	char **w;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-
-	num_words = count_words(str);
-
-	if (num_words == 0)
+	n = wrdcnt(str);
+	if (n == 1)
 		return (NULL);
-
-	words = (char **)malloc((num_words + 1) * sizeof(char *));
-	if (words == NULL)
+	w = (char **)malloc(n * sizeof(char *));
+	if (w == NULL)
 		return (NULL);
-
-	word_index = 0;
-	token = strtok(str, " \t\n");
-
-	while (token != NULL)
+	w[n - 1] = NULL;
+	i = 0;
+	while (str[i])
 	{
-		words[word_index] = strdup(token);
-		if (words[word_index] == NULL)
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
-			for (i = 0; i < word_index; i++)
-				free(words[i]);
-			free(words);
-			return (NULL);
+			for (j = 1; str[i + j] != ' ' &&  str[i + j]; j++)
+				;
+			j++;
+			w[wc] = (char *)malloc(j * sizeof(char));
+			j--;
+			if (w[wc] == NULL)
+			{
+				for (k = 0; k < wc; k++)
+					free(w[k]);
+				free(w[n - 1]);
+				free(w);
+				return (NULL);
+			}
+			for (l = 0; l < j; l++)
+				w[wc][l] = str[i + l];
+			w[wc][l] = '\0';
+			wc++;
+			i += j;
 		}
-		word_index++;
-		token = strtok(NULL, " \t\n");
+		else
+			i++;
 	}
-
-	words[word_index] = NULL;
-	return (words);
+	return (w);
 }
 
