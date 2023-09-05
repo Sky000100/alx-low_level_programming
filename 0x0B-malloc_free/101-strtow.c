@@ -78,27 +78,3 @@ char **strtow(char *str)
 	return (words);
 }
 
-int main(void)
-{
-	char **words;
-	char input[] = "Talk is cheap. Show me the code.";
-	int i;
-
-	words = strtow(input);
-
-	if (words != NULL)
-	{
-		for (i = 0; words[i] != NULL; i++)
-		{
-			printf("%s\n", words[i]);
-			free(words[i]);
-		}
-		free(words);
-	}
-	else
-	{
-		printf("String splitting failed.\n");
-	}
-
-	return (0);
-}
