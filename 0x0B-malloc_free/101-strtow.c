@@ -78,18 +78,3 @@ char **strtow(char *str)
 	return (words);
 }
 
-/**
- * print_tab - Prints an array of string.
- * @tab: The array to print.
- *
- * Return: Nothing.
- */
-void print_tab(char **tab)
-{
-	int i;
-
-	for (i = 0; tab[i] != NULL; ++i)
-	{
-		printf("%s\n", tab[i]);
-	}
-}
