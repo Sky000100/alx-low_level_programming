@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * malloc_checked - Allocate memory with error checking
@@ -18,7 +19,6 @@ void *malloc_checked(unsigned int b)
 	ptr = malloc(b);
 	if (ptr == NULL)
 	{
-		fprintf(stderr, "Memory allocation failed\n");
 		exit(98);
 	}
 
