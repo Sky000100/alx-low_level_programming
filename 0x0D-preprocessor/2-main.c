@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+#define PRINT_FILE_NAME \
+	printf("This program was compiled from the file: %s\n", __FILE__)
+
 /**
  * main - Entry point of the program.
  *
@@ -7,10 +10,9 @@
  *
  * Return: Always 0.
  */
-
 int main(void)
 {
-	printf("This program was compiled from the file: %s\n", __FILE__);
+	PRINT_FILE_NAME;
 	return (0);
 }
 
