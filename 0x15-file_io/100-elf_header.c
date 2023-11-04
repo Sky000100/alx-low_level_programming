@@ -1,6 +1,6 @@
 #include "main.h"
 #include <elf.h>
-#include <stdlib.h>
+
 void print_osabi_more(Elf64_Ehdr h);
 
 /**
